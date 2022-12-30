@@ -1,0 +1,39 @@
+//****************************************************************************************************
+
+//cmd>  gradle task --all
+//cmd>  gradle t1
+//cmd>  gradle t4
+//cmd>  gradle t3
+
+//***************************************************************************************************
+
+task "t1"
+task ("t2")
+task t3
+task t4
+
+t1{
+doLast{println "task1"}
+}
+
+t2{
+doLast{println "task2"}
+}
+
+t2{
+doLast{println "taskt22-last"}
+doFirst{println "taskt22-first"}
+}
+
+t3{
+dependsOn t2,t1
+doLast{println "task3"}
+}
+
+t4{
+doLast{println "task4"}
+}
+
+t4.dependsOn t3
+defaultTasks 't4'
+
