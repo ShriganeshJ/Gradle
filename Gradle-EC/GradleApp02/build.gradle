@@ -9,16 +9,68 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java'
+    id 'application'
+    id 'java-library'
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    //Third party
+   maven {
+   url "https://maven.repository.redhat.com/ga/"
+   }
+   google()
+   jcenter()
+   
 }
 
+mainClassName='com.nt.basic.Addition'
+
+
+ext {
+    spver= "5.2.7.RELEASE";
+    }
+
 dependencies {
-// https://mvnrepository.com/artifact/junit/junit
+//https://mvnrepository.com/artifact/junit/junit
 testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+
+// https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6
+implementation group: 'com.oracle.database.jdbc', name: 'ojdbc6', version: '11.2.0.4'
+
+//third party 
+
+// https://mvnrepository.com/artifact/joda-time/joda-time
+implementation group: 'joda-time', name: 'joda-time', version: '2.9.1.redhat-1'
+
+
+//locl file
+implementation files("D://Jars//mysql-connector.jar");
+
+//Dynamc version 
+
+
+    
+// https://mvnrepository.com/artifact/org.springframework/spring-web
+api group: 'org.springframework', name: 'spring-web', version: "$spver"
+
+// https://mvnrepository.com/artifact/org.springframework/spring-context
+implementation group: 'org.springframework', name: 'spring-context', version: "$spver"
+
+// https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+implementation group: 'org.springframework', name: 'spring-jdbc', version: "$spver"
+
+
+    
+
+
+
+
+
+
+
+
 
  }
 
